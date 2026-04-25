@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Nueva Solicitud";
+}
+
+<h2>Nueva Solicitud de Crédito</h2>
+
+@if (ViewBag.Mensaje != null)
+{
+    <div style="color:green">
+        @ViewBag.Mensaje
+    </div>
+}
+
+<form method="post">
+    <div>
+        <label>Monto solicitado:</label>
+        <input type="number" name="montoSolicitado" step="0.01" required />
+    </div>
+
+    <button type="submit">Enviar Solicitud</button>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <ul style="color:red">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <li>@error.ErrorMessage</li>
+        }
+    </ul>
+}
