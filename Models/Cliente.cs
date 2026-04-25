@@ -1,14 +1,9 @@
-using System.ComponentModel.DataAnnotations;
+namespace PlataformaCreditos.Models;
 
 public class Cliente
 {
     public int Id { get; set; }
-
-    [Required]
-    public string UsuarioId { get; set; }
-
-    [Range(1, double.MaxValue, ErrorMessage = "IngresosMensuales debe ser mayor a 0")]
+    public string UsuarioId { get; set; } = string.Empty;
     public decimal IngresosMensuales { get; set; }
-
     public bool Activo { get; set; }
 }
