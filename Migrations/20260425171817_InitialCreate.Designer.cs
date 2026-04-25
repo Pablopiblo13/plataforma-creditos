@@ -2,43 +2,23 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using PlataformaCreditos.Data;
 
 #nullable disable
 
-namespace PlataformaCreditos.Data.Migrations
+namespace PlataformaCreditos.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260425171817_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.7");
-
-            modelBuilder.Entity("Cliente", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Activo")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("IngresosMensuales")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UsuarioId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Clientes", t =>
-                        {
-                            t.HasCheckConstraint("CK_Cliente_Ingresos", "IngresosMensuales > 0");
-                        });
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -236,7 +216,31 @@ namespace PlataformaCreditos.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SolicitudCredito", b =>
+            modelBuilder.Entity("PlataformaCreditos.Models.Cliente", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("IngresosMensuales")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clientes", t =>
+                        {
+                            t.HasCheckConstraint("CK_Cliente_Ingresos", "IngresosMensuales > 0");
+                        });
+                });
+
+            modelBuilder.Entity("PlataformaCreditos.Models.SolicitudCredito", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -255,7 +259,6 @@ namespace PlataformaCreditos.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("MotivoRechazo")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -264,7 +267,7 @@ namespace PlataformaCreditos.Data.Migrations
                         .IsUnique()
                         .HasFilter("[Estado] = 0");
 
-                    b.ToTable("Solicitudes", t =>
+                    b.ToTable("SolicitudesCredito", t =>
                         {
                             t.HasCheckConstraint("CK_SolicitudCredito_Monto", "MontoSolicitado > 0");
                         });
@@ -321,9 +324,9 @@ namespace PlataformaCreditos.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SolicitudCredito", b =>
+            modelBuilder.Entity("PlataformaCreditos.Models.SolicitudCredito", b =>
                 {
-                    b.HasOne("Cliente", "Cliente")
+                    b.HasOne("PlataformaCreditos.Models.Cliente", "Cliente")
                         .WithMany()
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)

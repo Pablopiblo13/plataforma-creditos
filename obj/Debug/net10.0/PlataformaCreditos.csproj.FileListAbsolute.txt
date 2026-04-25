@@ -2,7 +2,6 @@ C:\Users\PABLO\PlataformaCreditos\bin\Debug\net10.0\appsettings.Development.json
 C:\Users\PABLO\PlataformaCreditos\bin\Debug\net10.0\appsettings.json
 C:\Users\PABLO\PlataformaCreditos\bin\Debug\net10.0\PlataformaCreditos.staticwebassets.runtime.json
 C:\Users\PABLO\PlataformaCreditos\bin\Debug\net10.0\PlataformaCreditos.staticwebassets.endpoints.json
-C:\Users\PABLO\PlataformaCreditos\bin\Debug\net10.0\app.db
 C:\Users\PABLO\PlataformaCreditos\bin\Debug\net10.0\PlataformaCreditos.exe
 C:\Users\PABLO\PlataformaCreditos\bin\Debug\net10.0\PlataformaCreditos.deps.json
 C:\Users\PABLO\PlataformaCreditos\bin\Debug\net10.0\PlataformaCreditos.runtimeconfig.json
@@ -136,6 +135,7 @@ C:\Users\PABLO\PlataformaCreditos\obj\Debug\net10.0\PlataformaCreditos.MvcApplic
 C:\Users\PABLO\PlataformaCreditos\obj\Debug\net10.0\PlataformaCreditos.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\PABLO\PlataformaCreditos\obj\Debug\net10.0\PlataformaCreditos.RazorAssemblyInfo.cache
 C:\Users\PABLO\PlataformaCreditos\obj\Debug\net10.0\PlataformaCreditos.RazorAssemblyInfo.cs
+C:\Users\PABLO\PlataformaCreditos\obj\Debug\net10.0\PlataformaCreditos.sourcelink.json
 C:\Users\PABLO\PlataformaCreditos\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\PABLO\PlataformaCreditos\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\PABLO\PlataformaCreditos\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
@@ -279,3 +279,4 @@ C:\Users\PABLO\PlataformaCreditos\obj\Debug\net10.0\refint\PlataformaCreditos.dl
 C:\Users\PABLO\PlataformaCreditos\obj\Debug\net10.0\PlataformaCreditos.pdb
 C:\Users\PABLO\PlataformaCreditos\obj\Debug\net10.0\PlataformaCreditos.genruntimeconfig.cache
 C:\Users\PABLO\PlataformaCreditos\obj\Debug\net10.0\ref\PlataformaCreditos.dll
+C:\Users\PABLO\PlataformaCreditos\bin\Debug\net10.0\app.db

@@ -1,0 +1,49 @@
+@model IEnumerable<PlataformaCreditos.Models.SolicitudCredito>
+
+<h2>Mis Solicitudes</h2>
+
+<form method="get">
+    <label>Estado:</label>
+    <select name="estado">
+        <option value="">Todos</option>
+        <option value="Pendiente">Pendiente</option>
+        <option value="Aprobado">Aprobado</option>
+        <option value="Rechazado">Rechazado</option>
+    </select>
+
+    <label>Monto mínimo:</label>
+    <input type="number" name="montoMin" />
+
+    <label>Monto máximo:</label>
+    <input type="number" name="montoMax" />
+
+    <label>Fecha inicio:</label>
+    <input type="date" name="fechaInicio" />
+
+    <label>Fecha fin:</label>
+    <input type="date" name="fechaFin" />
+
+    <button type="submit">Filtrar</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Monto</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var s in Model)
+    {
+        <tr>
+            <td>@s.MontoSolicitado</td>
+            <td>@s.FechaSolicitud.ToShortDateString()</td>
+            <td>@s.Estado</td>
+            <td><a asp-action="Detalle" asp-route-id="@s.Id">Ver detalle</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
