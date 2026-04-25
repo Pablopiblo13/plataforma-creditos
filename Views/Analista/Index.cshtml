@@ -1,0 +1,48 @@
+@model IEnumerable<PlataformaCreditos.Models.SolicitudCredito>
+
+<h2>Panel del Analista</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Ingresos</th>
+            <th>Monto</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var s in Model)
+{
+        <tr>
+            <td>@s.Cliente.UsuarioId</td>
+            <td>@s.Cliente.IngresosMensuales</td>
+            <td>@s.MontoSolicitado</td>
+            <td>
+
+                @using (Html.BeginForm("Aprobar", "Analista", FormMethod.Post))
+                {
+                    <input type="hidden" name="id" value="@s.Id" />
+                    <button type="submit" class="btn btn-success btn-sm">
+                        Aprobar
+                    </button>
+                }
+
+                @using (Html.BeginForm("Rechazar", "Analista", FormMethod.Post))
+                {
+                    <input type="hidden" name="id" value="@s.Id" />
+                    <input type="text"
+                           name="motivo"
+                           placeholder="Motivo rechazo"
+                           required
+                           class="form-control form-control-sm mb-1" />
+                    <button type="submit" class="btn btn-danger btn-sm">
+                        Rechazar
+                    </button>
+                }
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
