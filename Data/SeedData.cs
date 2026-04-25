@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using PlataformaCreditos.Data;
+using PlataformaCreditos.Models;
+
+namespace PlataformaCreditos.Data;
 
 public static class SeedData
 {
@@ -10,14 +14,37 @@ public static class SeedData
 
         if (!context.Clientes.Any())
         {
-            var cliente1 = new Cliente { UsuarioId = "user1", IngresosMensuales = 2000, Activo = true };
-            var cliente2 = new Cliente { UsuarioId = "user2", IngresosMensuales = 3000, Activo = true };
+            var cliente1 = new Cliente
+            {
+                UsuarioId = "user1",
+                IngresosMensuales = 2000,
+                Activo = true
+            };
+
+            var cliente2 = new Cliente
+            {
+                UsuarioId = "user2",
+                IngresosMensuales = 3000,
+                Activo = true
+            };
 
             context.Clientes.AddRange(cliente1, cliente2);
 
-            context.Solicitudes.AddRange(
-                new SolicitudCredito { Cliente = cliente1, MontoSolicitado = 4000, FechaSolicitud = DateTime.Now, Estado = EstadoSolicitud.Pendiente },
-                new SolicitudCredito { Cliente = cliente2, MontoSolicitado = 5000, FechaSolicitud = DateTime.Now, Estado = EstadoSolicitud.Aprobado }
+            context.SolicitudesCredito.AddRange(
+                new SolicitudCredito
+                {
+                    Cliente = cliente1,
+                    MontoSolicitado = 4000,
+                    FechaSolicitud = DateTime.Now,
+                    Estado = EstadoSolicitud.Pendiente
+                },
+                new SolicitudCredito
+                {
+                    Cliente = cliente2,
+                    MontoSolicitado = 5000,
+                    FechaSolicitud = DateTime.Now,
+                    Estado = EstadoSolicitud.Aprobado
+                }
             );
 
             await context.SaveChangesAsync();
@@ -34,7 +61,13 @@ public static class SeedData
         var analista = await userManager.FindByNameAsync("analista@demo.com");
         if (analista == null)
         {
-            analista = new IdentityUser { UserName = "analista@demo.com", Email = "analista@demo.com", EmailConfirmed = true };
+            analista = new IdentityUser
+            {
+                UserName = "analista@demo.com",
+                Email = "analista@demo.com",
+                EmailConfirmed = true
+            };
+
             await userManager.CreateAsync(analista, "Analista123!");
             await userManager.AddToRoleAsync(analista, "Analista");
         }
